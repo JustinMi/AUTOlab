@@ -32,7 +32,6 @@ def send_email(user, pwd, recipient, subject, body):
     except Exception as e:
         print("failed to send mail, " + str(e))
 
-import smtplib
 
 
 def send_mail(send_from, send_to, subject, text, files=None, server="127.0.0.1"):

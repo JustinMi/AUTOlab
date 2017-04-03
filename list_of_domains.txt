@@ -1,0 +1,211 @@
+list of domains
+
+###############
+automation.conf
+###############
+
+ServerName automation.berkeley.edu
+ServerAlias rieff.ieor.berkeley.edu    
+DocumentRoot /var/www/html
+
+ServerName robotics.berkeley.edu
+
+# ServerName automation.berkeley.edu
+# DocumentRoot /var/www/html/automation.berkeley.edu
+
+ServerName demonstrate.berkeley.edu
+DocumentRoot /var/www/html/demonstrate.berkeley.edu
+
+ServerName teleactor.berkeley.edu
+DocumentRoot /var/www/html/teleactor
+
+ServerName calmr.berkeley.edu
+DocumentRoot /var/www/html/cal-mr
+
+ServerName cal-mr.berkeley.edu
+DocumentRoot /var/www/html/cal-mr
+
+ServerName www.dislocation.net
+DocumentRoot /var/www/memento/html/dislocation/
+
+ServerName edison.ieor.berkeley.edu
+ServerAlias www.dislocation.net
+DocumentRoot /var/www/memento/html/dislocation/
+
+
+# ServerName shadow.ieor.berkeley.edu
+# DocumentRoot /var/www/html/jester4/
+
+ServerName eigentaste.berkeley.edu
+ServerAlias shadow.ieor.berkeley.edu
+DocumentRoot /var/www/html/eigentaste.berkeley.edu/
+
+ServerName ouija.berkeley.edu
+DocumentRoot /var/www/html/ouija/ouija/
+
+ServerName taylor.ieor.berkeley.edu
+DocumentRoot /var/www/html/ouija/
+
+DocumentRoot /var/www/memento/html
+ServerName memento.ieor.berkeley.edu
+
+ServerName cnm.berkeley.edu
+ServerAlias cnm.berkeley.edu
+DocumentRoot /var/www/html/cnm
+Redirect 301 / http://bcnm.berkeley.edu
+
+ServerName dd.berkeley.edu
+DocumentRoot /var/www/html/donation/dd/
+
+
+###############
+crc.conf
+###############
+
+# californiareportcard.com -- 301 to californiareportcard.org
+# cafesystem.org       -- see /var/www/cafesystem.org
+# citizenreportcard.org    -- 301 to californiareportcard.org
+
+DocumentRoot /var/www/crc/
+ServerAlias californiareportcard.org
+
+Alias /naturalFrequencies /var/www/naturalFrequencies
+Alias /disaster/media /var/www/crc/disasterCafe/src/client/media/
+Alias /v26/media /var/www/crc/cafe-v26/src/client/media/
+Alias /participa/static /var/www/crc/crctwext/participa/static
+Alias /mexico/media /var/www/crc/cafe-mexico/src/client/media/
+Alias /uganda2/media /var/www/crc/uganda2/src/client/media/
+Alias /quakecafe2/media /var/www/crc/quakecafe2/src/client/media/
+
+Redirect permanent /mobile http://californiareportcard.org/2.0
+Redirect permanent /quakecafe http://quakecafe.org
+Redirect permanent /v16/stats/ /v26/stats/
+
+Alias /es /var/www/crc/crc_spanish/
+
+ServerName cafesystem.org
+ServerAlias cafesystem.org
+
+ServerName quakecafe.org
+ServerAlias quakecafe.org
+DocumentRoot /var/www/crc/quakecafe
+
+Alias /media /var/www/crc/quakecafe/src/client/media/
+
+ServerName www.quakecafe.org
+Redirect 301 / http://quakecafe.org
+
+
+###############
+opinion.conf
+###############
+
+DocumentRoot /var/www/opinion/opinion.berkeley.edu/landing
+ServerName opinion.berkeley.edu
+ServerAlias opinion.berkeley.edu
+
+Alias /1.0/media /var/www/opinion/opinion.berkeley.edu/1.0/media
+Alias /assets /var/www/opinion/opinion.berkeley.edu/assets
+Alias /2.0 /var/www/opinion/opinion.berkeley.edu/2.0
+Alias /news /var/www/opinion/opinion.berkeley.edu/news
+Redirect /fiatlux http://heidegger.ieor.berkeley.edu/fiatlux
+Redirect /prop-30 http://turing.ieor.berkeley.edu/cde-instances/FI7DZEZQJ98NMDAO
+Alias /ddi /var/www/opinion/opinion.berkeley.edu/ddi
+Alias /ddi-static /var/www/opinion/opinion.berkeley.edu/ddi-static
+Alias /landing-new /var/www/opinion/opinion.berkeley.edu/landing-new
+Alias /learning/media /var/www/opinion/opinion.berkeley.edu/learning/src/client/media
+Alias /open-nyu-test/media /var/www/opinion/opinion.berkeley.edu/open-nyu/src/client/media
+Alias /gibson/media /var/www/opinion/opinion.berkeley.edu/gibson/src/client/media
+Alias /ca-prop-30-awareness/bootstrap /var/www/opinion/opinion.berkeley.edu/landing/ca-prop-30-awareness/bootstrap/
+Alias /afron/media /var/www/opinion/opinion.berkeley.edu/afron/src/client/media
+Alias /rationality/media /var/www/opinion/opinion.berkeley.edu/rationality/src/client/media
+Alias /occupy/media /var/www/opinion/opinion.berkeley.edu/occupy/src/client/media
+Alias /testing/media /var/www/opinion/opinion.berkeley.edu/testing/client/media
+Alias /case2013/media /var/www/opinion/opinion.berkeley.edu/case2013/src/client/media
+Alias /test/media /var/www/opinion/opinion.berkeley.edu/landing/test/src/client/media
+Alias /mooc/media /var/www/opinion/opinion.berkeley.edu/mooc/mooc-cafe/src/client/media
+Alias /m-cafe-2/media /var/www/opinion/opinion.berkeley.edu/m-cafe-2/mooc-cafe/src/client/media
+Alias /m-cafe-3/media /var/www/opinion/opinion.berkeley.edu/m-cafe-3/mooc-cafe/src/client/media
+Alias /privacy/media /var/www/opinion/opinion.berkeley.edu/apple-vs-fbi/cafe/src/client/media
+Alias /pcari/static /var/www/opinion/opinion.berkeley.edu/pcari/pcari/static
+Alias /uganda/media /var/www/opinion/opinion.berkeley.edu/uganda-test/uganda-cafe/src/client/media
+Alias /devcafe /var/www/opinion/opinion.berkeley.edu/devcafe
+Alias /ieor115 /var/www/opinion/opinion.berkeley.edu/landing/m-cafe/ieor115-fa15
+
+DocumentRoot /var/www/opinion/opinion-labs.berkeley.edu/html/
+ServerName opinion-labs.berkeley.edu
+ServerAlias opinion-labs.berkeley.edu
+
+Alias /media /var/www/opinion/opinion-labs.berkeley.edu/media
+
+DocumentRoot /var/www/opinion/m-cafe.org/html
+ServerName m-cafe.org
+
+DocumentRoot /var/www/opinion/localhost/html
+ServerName heidegger.ieor.berkeley.edu
+
+Alias /fiatlux/media /var/www/opinion/localhost/html/fiatlux/client/trunk/media
+
+
+
+
+###############
+turing.conf
+###############
+
+ServerAdmin webmaster@localhost
+ServerName cone.berkeley.edu
+DocumentRoot /var/www/turing/cone
+
+ServerAdmin webmaster@localhost
+ServerName dd.berkeley.edu
+DocumentRoot /var/www/turing/dd.berkeley.edu/html
+
+ServerAdmin webmaster@localhost
+ServerName turing.ieor.berkeley.edu
+DocumentRoot /var/www
+
+Alias /prop-30-qim/bootstrap /var/www/turing/prop-30-qim/bootstrap/
+Alias /cde-instances/ /var/www/turing/opinionspace/instances/
+Alias /unilever-grads/ /var/www/turing/opinionspace/instances/Q4O7UFUVO2NJXY4N/
+Alias /unilever/4OZ4N14HYTXU0QO9/ /var/www/turing/opinionspace/instances/4OZ4N14HYTXU0QO9/
+
+
+###############
+wafr.conf
+###############
+
+
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/crc/wafr2016
+ServerAlias wafr2016.berkeley.edu
+ServerAlias wafr.org
+ServerAlias www.wafr.org
+
+DocumentRoot /var/www/crc/atc
+ServerAlias atc.berkeley.edu
+ServerName atc.berkeley.edu 
+
+DocumentRoot /var/www/crc/regents
+ServerAlias regents-lectures.berkeley.edu
+ServerName regents-lectures.berkeley.edu        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
