@@ -1,0 +1,165 @@
+<VirtualHost *:80>
+       ServerName robotics.berkeley.edu
+       RedirectMatch (.*) http://robotics.citris-uc.org
+</VirtualHost>
+# <VirtualHost *:80>
+#        ServerName automation.berkeley.edu
+#        DocumentRoot /var/www/html/automation.berkeley.edu
+# </VirtualHost>
+<VirtualHost *:80>
+       ServerName demonstrate.berkeley.edu
+       DocumentRoot /var/www/html/demonstrate.berkeley.edu
+</VirtualHost>
+<VirtualHost *:80>
+       ServerName teleactor.berkeley.edu
+       DocumentRoot /var/www/html/teleactor
+</VirtualHost>
+<VirtualHost *:80>
+       ServerName calmr.berkeley.edu
+       DocumentRoot /var/www/html/cal-mr
+</VirtualHost>
+<VirtualHost *:80>
+       ServerName cal-mr.berkeley.edu
+       DocumentRoot /var/www/html/cal-mr
+</VirtualHost>
+<VirtualHost *:80>
+       ServerName www.dislocation.net
+       DocumentRoot /var/www/memento/html/dislocation/
+       ScriptAlias /cgi-bin/ /var/www/memento/cgi-bin/dislocation/
+</VirtualHost>
+<VirtualHost *:80>
+       ServerName edison.ieor.berkeley.edu
+       ServerAlias www.dislocation.net
+       DocumentRoot /var/www/memento/html/dislocation/
+       ScriptAlias /cgi-bin/ /var/www/memento/cgi-bin/dislocation/
+</VirtualHost>
+# <VirtualHost *:80>
+#        ServerName shadow.ieor.berkeley.edu
+#        DocumentRoot /var/www/html/jester4/
+#        ScriptAlias /cgi-bin /var/www/cgi-bin/jester/
+# </VirtualHost>
+<VirtualHost *:80>
+       ServerName eigentaste.berkeley.edu
+       ServerAlias shadow.ieor.berkeley.edu
+       DocumentRoot /var/www/html/eigentaste.berkeley.edu/
+       # ScriptAlias /cgi-bin /var/www/cgi-bin/jester/
+</VirtualHost>
+<VirtualHost *:80>
+       ServerName ouija.berkeley.edu
+       DocumentRoot /var/www/html/ouija/ouija/
+       ScriptAlias /cgi-bin/ /var/www/cgi-bin/ouija/
+</VirtualHost>
+
+<VirtualHost *:80>
+       ServerName taylor.ieor.berkeley.edu
+       DocumentRoot /var/www/html/ouija/
+       ScriptAlias /cgi-bin/ /var/www/cgi-bin/ouija/
+</VirtualHost>
+<VirtualHost *:80>
+    DocumentRoot /var/www/memento/html
+    ServerName memento.ieor.berkeley.edu
+    ScriptAlias /cgi-bin/ /var/www/memento/html/cgi-bin/
+</VirtualHost>
+
+<VirtualHost *:80>
+       ServerName cnm.berkeley.edu
+       ServerAlias cnm.berkeley.edu
+       DocumentRoot /var/www/html/cnm
+       Redirect 301 / http://bcnm.berkeley.edu
+</VirtualHost>
+<VirtualHost *:80>
+        ServerName dd.berkeley.edu
+        DocumentRoot /var/www/html/donation/dd/
+</VirtualHost>
+
+
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName automation.berkeley.edu
+    ServerAlias rieff.ieor.berkeley.edu    
+    DocumentRoot /var/www/html
+    <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+    </Directory>
+    <Directory /var/www/html>
+    Options FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    allow from all
+    </Directory>
+
+    Redirect /brass http://brass.services/
+    Redirect /uptime /cgi-bin/uptime
+
+    # Check /var/www/html/automation.berkeley.edu before serving DocumentRoot
+    RewriteEngine on
+    RewriteCond "/var/www/html/automation.berkeley.edu%{REQUEST_URI}" -f [OR]
+    RewriteCond "/var/www/html/automation.berkeley.edu%{REQUEST_URI}" -d
+    RewriteRule ^/?(.*)$ /var/www/html/automation.berkeley.edu/$1 [L]
+    # ---------------------------
+    
+    ScriptAlias /cgi-bin/ /var/www/cgi-bin/
+    <Directory "/var/www/cgi-bin/">
+    AllowOverride None
+    Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+    Order allow,deny
+    Allow from all
+    </Directory>
+
+    <Directory "/var/www/html/rashomon">
+    Options FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+    </Directory>
+
+    ErrorLog /var/log/apache2/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel debug
+
+    CustomLog /var/log/apache2/access.log vhost_combined
+
+    Alias /doc/ "/usr/share/doc/"
+    <Directory "/usr/share/doc/">
+        Options Indexes MultiViews FollowSymLinks
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+    </Directory>
+
+    Alias /usc-archive/ /var/www/usc/raiders/
+    <Directory /var/www/usc/raiders/>
+    Order deny,allow
+        Allow from all
+    </Directory>
+
+    WSGIApplicationGroup %{GLOBAL}
+    WSGIDaemonProcess jester5 display-name=jester5
+    WSGIScriptAlias /jester_backend /var/www/html/jester5/jester_backend/jester.wsgi
+    <Directory /var/www/html/jester5/jester_backend/>
+        <Files jester.wsgi>
+        Allow from all
+            Order deny,allow
+        </Files>
+    </Directory>
+
+    WSGIApplicationGroup %{GLOBAL}
+    WSGIDaemonProcess ac display-name=ac
+    WSGIScriptAlias /ACC2012Data /var/www/html/ACC2012Data/ac.wsgi
+
+    Alias /ACC2012Data/website/static/ /var/www/html/ACC2012Data/website/static/
+    Alias /ACC2012Data/static/ /var/www/html/ACC2012Data/website/static/
+    <Directory /var/www/html/ACC2012Data/website/static/>
+            Allow from all
+            Order deny,allow
+    </Directory>
+
+    WSGIScriptAlias /activecleandemo /var/www/html/activecleandemo/django.wsgi
+    Alias /activecleandemo/static /var/www/html/activecleandemo/interface/static/interface/
+
+</VirtualHost>

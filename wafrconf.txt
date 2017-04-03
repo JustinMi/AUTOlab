@@ -1,0 +1,57 @@
+<VirtualHost *:80>
+           
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/crc/wafr2016
+    ServerAlias wafr2016.berkeley.edu
+    ServerAlias wafr.org
+    ServerAlias www.wafr.org
+
+        SetEnv LANG='en_US.UTF-8'
+        SetEnv LC_ALL='en_US.UTF-8'     
+
+    <Directory />
+            Options FollowSymLinks
+           AllowOverride All
+            Order allow,deny
+            Allow from all
+         </Directory>
+
+</VirtualHost>
+<VirtualHost *:80>
+           
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/crc/atc
+    ServerAlias atc.berkeley.edu
+    ServerName atc.berkeley.edu 
+        SetEnv LANG='en_US.UTF-8'
+        SetEnv LC_ALL='en_US.UTF-8'     
+
+    <Directory />
+            Options FollowSymLinks
+           AllowOverride All
+            Order allow,deny
+            Allow from all
+         </Directory>
+
+    RewriteEngine on
+    RewriteRule  ^/bio  /bio.php
+    #ScriptAlias /bio/ /var/www/crc/atc/bio.php
+
+</VirtualHost>
+<VirtualHost *:80>
+           
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/crc/regents
+    ServerAlias regents-lectures.berkeley.edu
+    ServerName regents-lectures.berkeley.edu        
+        SetEnv LANG='en_US.UTF-8'
+        SetEnv LC_ALL='en_US.UTF-8'     
+
+    <Directory />
+            Options FollowSymLinks
+           AllowOverride All
+            Order allow,deny
+            Allow from all
+         </Directory>
+
+</VirtualHost>

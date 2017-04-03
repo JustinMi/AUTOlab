@@ -1,0 +1,71 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName cone.berkeley.edu
+
+    DocumentRoot /var/www/turing/cone
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName dd.berkeley.edu
+
+    DocumentRoot /var/www/turing/dd.berkeley.edu/html
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName turing.ieor.berkeley.edu
+
+    DocumentRoot /var/www
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+    <Directory /var/www/turing/>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        allow from all
+    </Directory>
+
+    ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+    <Directory "/usr/lib/cgi-bin">
+        AllowOverride None
+        Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        WSGIScriptAlias /cde /var/www/turing/opinionspace/osd.wsgi
+    <Directory /var/www/turing/opinionspace/osdashboard/static/>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+     WSGIScriptAlias /prop-30-qim /var/www/turing/prop-30-qim/prop30.wsgi
+     Alias /prop-30-qim/bootstrap /var/www/turing/prop-30-qim/bootstrap/
+    <Directory /var/www/turing/prop-30-qim/bootstrap/>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+
+        Alias /cde-instances/ /var/www/turing/opinionspace/instances/
+     <Directory /var/www/turing/opinionspace/instances/>
+        AllowOverride All
+        Options +ExecCGI -IncludesNoExec
+      Options -Indexes
+        </Directory>
+
+    Alias /unilever-grads/ /var/www/turing/opinionspace/instances/Q4O7UFUVO2NJXY4N/
+    Alias /unilever/4OZ4N14HYTXU0QO9/ /var/www/turing/opinionspace/instances/4OZ4N14HYTXU0QO9/
+
+</VirtualHost>

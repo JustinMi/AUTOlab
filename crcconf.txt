@@ -1,0 +1,160 @@
+# californiareportcard.com -- 301 to californiareportcard.org
+# cafesystem.org       -- see /var/www/cafesystem.org
+# citizenreportcard.org    -- 301 to californiareportcard.org
+
+<VirtualHost *:80>
+       
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/crc/
+    ServerAlias californiareportcard.org
+
+        WSGIDaemonProcess citizenreportcard.org
+        WSGIProcessGroup citizenreportcard.org
+
+    SetEnv LANG='en_US.UTF-8'
+    SetEnv LC_ALL='en_US.UTF-8' 
+
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+
+         <Directory "/var/www/crc/">
+            Options FollowSymLinks
+           AllowOverride All
+            Order allow,deny
+            Allow from all
+     </Directory>
+
+
+    Alias /naturalFrequencies /var/www/naturalFrequencies
+    <Directory /var/www/naturalFrequencies>
+        AddHandler cgi-script .cgi .pl .py
+        SetHandler cgi-script
+        Options +ExecCGI
+    </Directory>
+
+        WSGIDaemonProcess project-29
+        WSGIScriptAlias /disaster /var/www/crc/disasterCafe.wsgi process-group=project-29
+        Alias /disaster/media /var/www/crc/disasterCafe/src/client/media/
+        <Directory /var/www/crc/disasterCafe/src/client/media/>
+                Order allow,deny
+                allow from all
+        </Directory>
+
+    WSGIDaemonProcess project-31
+        WSGIScriptAlias /2.0 /var/www/crc/cafe-v26.wsgi process-group=project-31
+        WSGIScriptAlias /v26 /var/www/crc/cafe-v26.wsgi process-group=project-31
+        Alias /v26/media /var/www/crc/cafe-v26/src/client/media/
+        <Directory /var/www/crc/cafe-v26/src/client/media/>
+                Order allow,deny
+                allow from all
+        </Directory>
+
+
+        WSGIDaemonProcess participa display-name=participa
+        WSGIScriptAlias /participa /var/www/crc/crctwext/participa.wsgi
+        Alias /participa/static /var/www/crc/crctwext/participa/static
+
+        WSGIDaemonProcess jester display-name=jester
+        WSGIScriptAlias /jester /var/www/jester5/jester_backend/jester.wsgi
+
+    WSGIDaemonProcess project-mex
+        WSGIScriptAlias /mexico /var/www/crc/cafe-mexico.wsgi process-group=project-mex
+        Alias /mexico/media /var/www/crc/cafe-mexico/src/client/media/
+        <Directory /var/www/crc/cafe-mexico/src/client/media/>
+                Order allow,deny
+                allow from all
+        </Directory>
+
+    WSGIDaemonProcess uganda2
+        WSGIScriptAlias /uganda2 /var/www/crc/uganda2/django.wsgi process-group=uganda2
+        Alias /uganda2/media /var/www/crc/uganda2/src/client/media/
+        <Directory /var/www/crc/uganda2/src/client/media/>
+                Order allow,deny
+                allow from all
+        </Directory>
+
+    WSGIDaemonProcess quakecafe2
+        WSGIScriptAlias /quakecafe2 /var/www/crc/quakecafe2.wsgi process-group=quakecafe2
+        Alias /quakecafe2/media /var/www/crc/quakecafe2/src/client/media/
+        <Directory /var/www/crc/quakecafe2/src/client/media/>
+                Order allow,deny
+                allow from all
+        </Directory>
+
+
+
+        Redirect permanent /mobile http://californiareportcard.org/2.0
+        Redirect permanent /quakecafe http://quakecafe.org
+        Redirect permanent /v16/stats/ /v26/stats/
+
+    Alias /es /var/www/crc/crc_spanish/
+        <Directory /var/www/crc/crc_spanish/>
+                Order allow,deny
+                allow from all
+        </Directory>
+
+    ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+    <Directory "/usr/lib/cgi-bin">
+        AllowOverride None
+        Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/crc_error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    CustomLog ${APACHE_LOG_DIR}/crc_access.log combined
+        WSGIApplicationGroup %{GLOBAL}
+
+    <Directory "/var/www/crc/naturalFrequencies/" >
+        Options +ExecCGI
+        AddHandler cgi-script .py
+    </Directory>
+
+</VirtualHost>
+
+
+<VirtualHost *:80>
+       ServerName cafesystem.org
+       ServerAlias cafesystem.org
+       Redirect 303 / http://citris-uc.org/connected-communities/project/the-collaborative-assessment-and-feedback-engine-cafe/
+       # DocumentRoot /var/www/crc/cafesystem.org
+    ErrorLog ${APACHE_LOG_DIR}/cafesystem_error.log
+    CustomLog ${APACHE_LOG_DIR}/cafesystem_access.log combined
+</VirtualHost>
+
+<VirtualHost *:80>
+       ServerName quakecafe.org
+       ServerAlias quakecafe.org
+       DocumentRoot /var/www/crc/quakecafe
+
+        WSGIDaemonProcess quakecafe
+        WSGIProcessGroup quakecafe
+        WSGIScriptAlias / /var/www/crc/quakecafe.wsgi process-group=quakecafe
+        Alias /media /var/www/crc/quakecafe/src/client/media/
+        <Directory /var/www/crc/quakecafe/src/client/media/>
+                Order allow,deny
+                allow from all
+        </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/quakecafe_error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    CustomLog ${APACHE_LOG_DIR}/quakecafe_access.log combined
+
+</VirtualHost>
+
+# Redirect www -> non-www because of same origin policy
+<VirtualHost *:80>
+       ServerName www.quakecafe.org
+       Redirect 301 / http://quakecafe.org
+</VirtualHost>

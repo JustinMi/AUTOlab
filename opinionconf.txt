@@ -1,0 +1,213 @@
+<VirtualHost *:80>  
+    ServerAdmin webmaster@opinion.berkeley.edu
+    DocumentRoot /var/www/opinion/opinion.berkeley.edu/landing
+    ServerName opinion.berkeley.edu
+    ServerAlias opinion.berkeley.edu
+    ErrorLog /var/log/apache2/opinion.berkeley.edu-error_log
+    CustomLog /var/log/apache2/opinion.berkeley.edu-access_log common
+    Header set Access-Control-Allow-Origin "*"
+    <Directory /var/www/opinion/opinion.berkeley.edu/landing>
+    AllowOverride all
+    Options +ExecCGI -IncludesNoExec
+    </Directory>
+    Alias /innovation-prototype/media /var/www/opinion/opinion.berkeley.edu/innovation-prototype/media
+    WSGIScriptAlias /innovation-prototype /var/www/opinion/opinion.berkeley.edu/innovation-prototype/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/innovation-prototype/media>
+    Order deny,allow
+    Allow from all
+    </Directory>
+    Alias /1.0/media /var/www/opinion/opinion.berkeley.edu/1.0/media
+    WSGIScriptAlias /1.0 /var/www/opinion/opinion.berkeley.edu/1.0/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/1.0/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+   Alias /assets /var/www/opinion/opinion.berkeley.edu/assets
+    <Directory /var/www/opinion/opinion.berkeley.edu/assets>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+   Alias /2.0 /var/www/opinion/opinion.berkeley.edu/2.0
+   Alias /news /var/www/opinion/opinion.berkeley.edu/news
+   Redirect /fiatlux http://heidegger.ieor.berkeley.edu/fiatlux
+   Redirect /prop-30 http://turing.ieor.berkeley.edu/cde-instances/FI7DZEZQJ98NMDAO
+   Alias /ddi /var/www/opinion/opinion.berkeley.edu/ddi
+   Alias /ddi-static /var/www/opinion/opinion.berkeley.edu/ddi-static
+   Alias /landing-new /var/www/opinion/opinion.berkeley.edu/landing-new
+
+  Alias /learning/media /var/www/opinion/opinion.berkeley.edu/learning/src/client/media
+    WSGIScriptAlias /learning /var/www/opinion/opinion.berkeley.edu/learning/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/learning/src/client/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+  MMapFile /var/www/opinion/opinion.berkeley.edu/learning/src/client/media/bin-release/opinionflex.swf
+
+  Alias /open-nyu-test/media /var/www/opinion/opinion.berkeley.edu/open-nyu/src/client/media
+    WSGIScriptAlias /open-nyu /var/www/opinion/opinion.berkeley.edu/open-nyu/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/open-nyu/src/client/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+  Redirect /opennyu /open-nyu
+
+  Alias /gibson/media /var/www/opinion/opinion.berkeley.edu/gibson/src/client/media
+    WSGIScriptAlias /gibson /var/www/opinion/opinion.berkeley.edu/gibson/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/gibson/src/client/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+  MMapFile /var/www/opinion/opinion.berkeley.edu/gibson/src/client/media/bin-release/opinionflex.swf
+
+    WSGIDaemonProcess ca-prop30
+    WSGIScriptAlias /ca-prop-30-awareness /var/www/opinion/opinion.berkeley.edu/landing/ca-prop-30-awareness/prop30.wsgi process-group=ca-prop30
+    Alias /ca-prop-30-awareness/bootstrap /var/www/opinion/opinion.berkeley.edu/landing/ca-prop-30-awareness/bootstrap/
+    <Directory /var/www/opinion/opinion.berkeley.edu/landing/ca-prop-30-awareness/bootstrap/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+   Alias /afron/media /var/www/opinion/opinion.berkeley.edu/afron/src/client/media
+    WSGIScriptAlias /afron /var/www/opinion/opinion.berkeley.edu/afron/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/afron/src/client/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+  MMapFile /var/www/opinion/opinion.berkeley.edu/afron/src/client/media/bin-release/opinionflex.swf
+
+
+     Alias /rationality/media /var/www/opinion/opinion.berkeley.edu/rationality/src/client/media
+    WSGIScriptAlias /rationality /var/www/opinion/opinion.berkeley.edu/rationality/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/rationality/src/client/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+  MMapFile /var/www/opinion/opinion.berkeley.edu/rationality/src/client/media/bin-release/opinionflex.swf
+     Alias /occupy/media /var/www/opinion/opinion.berkeley.edu/occupy/src/client/media
+    WSGIScriptAlias /occupy /var/www/opinion/opinion.berkeley.edu/occupy/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/occupy/src/client/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+  MMapFile /var/www/opinion/opinion.berkeley.edu/occupy/src/client/media/bin-release/opinionflex.swf
+
+     Alias /testing/media /var/www/opinion/opinion.berkeley.edu/testing/client/media
+    WSGIScriptAlias /testing /var/www/opinion/opinion.berkeley.edu/testing/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/testing/client/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+  MMapFile /var/www/opinion/opinion.berkeley.edu/case2013/src/client/media/bin-release/opinionflex.swf
+
+   Alias /case2013/media /var/www/opinion/opinion.berkeley.edu/case2013/src/client/media
+    WSGIScriptAlias /case2013 /var/www/opinion/opinion.berkeley.edu/case2013/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/case2013/src/client/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+  MMapFile /var/www/opinion/opinion.berkeley.edu/case2013/src/client/media/bin-release/opinionflex.swf
+
+       Alias /test/media /var/www/opinion/opinion.berkeley.edu/landing/test/src/client/media
+    WSGIScriptAlias /test /var/www/opinion/opinion.berkeley.edu/landing/test/django.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/landing/test/src/client/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+  MMapFile /var/www/opinion/opinion.berkeley.edu/landing/test/src/client/media/bin-release/opinionflex.swf
+
+       Alias /mooc/media /var/www/opinion/opinion.berkeley.edu/mooc/mooc-cafe/src/client/media
+    WSGIScriptAlias /mooc /var/www/opinion/opinion.berkeley.edu/mooc/django.wsgi
+ <Directory /var/www/opinion/opinion.berkeley.edu/mooc/mooc-cafe/src/client/media >
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+      Alias /m-cafe-2/media /var/www/opinion/opinion.berkeley.edu/m-cafe-2/mooc-cafe/src/client/media
+    WSGIScriptAlias /m-cafe-2 /var/www/opinion/opinion.berkeley.edu/m-cafe-2/django.wsgi
+ <Directory /var/www/opinion/opinion.berkeley.edu/m-cafe-2/mooc-cafe/src/client/media >
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+           Alias /m-cafe-3/media /var/www/opinion/opinion.berkeley.edu/m-cafe-3/mooc-cafe/src/client/media
+    WSGIScriptAlias /m-cafe-3 /var/www/opinion/opinion.berkeley.edu/m-cafe-3/django.wsgi
+    WSGIScriptAlias /ieor170 /var/www/opinion/opinion.berkeley.edu/m-cafe-3/django.wsgi
+ <Directory /var/www/opinion/opinion.berkeley.edu/m-cafe-3/mooc-cafe/src/client/media >
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+    
+    Alias /privacy/media /var/www/opinion/opinion.berkeley.edu/apple-vs-fbi/cafe/src/client/media
+    WSGIScriptAlias /privacy /var/www/opinion/opinion.berkeley.edu/apple-vs-fbi/django.wsgi
+ <Directory /var/www/opinion/opinion.berkeley.edu/apple-vs-fbi/cafe/src/client/media >
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+    WSGIDaemonProcess pcari python-path=/var/www/opinion/opinion.berkeley.edu/pcari:/var/www/opinion/opinion.berkeley.edu/pcari/venv/lib/python2.7/site-packages
+    Alias /pcari/static /var/www/opinion/opinion.berkeley.edu/pcari/pcari/static
+    WSGIScriptAlias /pcari /var/www/opinion/opinion.berkeley.edu/pcari/wsgi.py
+    <Location /pcari>
+        WSGIProcessGroup pcari
+    </Location>
+
+
+    WSGIScriptAlias /osdashboard /var/www/opinion/opinion.berkeley.edu/osd.wsgi
+    <Directory /var/www/opinion/opinion.berkeley.edu/osdashboard/static/>
+    Order deny,allow
+    Allow from all
+    </Directory>
+
+       Alias /uganda/media /var/www/opinion/opinion.berkeley.edu/uganda-test/uganda-cafe/src/client/media
+    WSGIScriptAlias /uganda /var/www/opinion/opinion.berkeley.edu/uganda-test/django.wsgi
+ <Directory /var/www/opinion/opinion.berkeley.edu/uganda-test/uganda-cafe/src/client/media >
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+    Redirect /uganda2 http://californiareportcard.org/uganda2
+     Alias /devcafe /var/www/opinion/opinion.berkeley.edu/devcafe
+     Alias /ieor115 /var/www/opinion/opinion.berkeley.edu/landing/m-cafe/ieor115-fa15
+
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@opinion.berkeley.edu
+    DocumentRoot /var/www/opinion/opinion-labs.berkeley.edu/html/
+    ServerName opinion-labs.berkeley.edu
+    ServerAlias opinion-labs.berkeley.edu
+    ErrorLog /var/log/apache2/opinion.berkeley.edu-error_log
+    CustomLog /var/log/apache2/opinion.berkeley.edu-access_log common
+    Alias /media /var/www/opinion/opinion-labs.berkeley.edu/media
+    WSGIScriptAlias / /var/www/opinion/opinion-labs.berkeley.edu/django.wsgi
+    <Directory /var/www/opinion/opinion-labs.berkeley.edu/media>
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+</VirtualHost>
+
+<VirtualHost *:80>
+        DocumentRoot /var/www/opinion/m-cafe.org/html
+        ServerName m-cafe.org
+
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot /var/www/opinion/localhost/html
+    ServerName heidegger.ieor.berkeley.edu
+
+    Alias /fiatlux/media /var/www/opinion/localhost/html/fiatlux/client/trunk/media
+    WSGIScriptAlias /fiatlux /var/www/opinion/localhost/html/fiatlux/django.wsgi
+</VirtualHost>
