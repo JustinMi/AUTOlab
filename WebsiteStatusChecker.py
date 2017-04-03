@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 def readLines():
     """Reads in lines from urls.txt, gives the status and other information on them"""
-    with open("urls.txt", "r") as f:
+    with open("text/urls.txt", "r") as f:
         urls = f.readlines()
 
     # cleans up the strings
@@ -15,7 +15,7 @@ def readLines():
 
 def writeLines(urls):
     # composes the status string, writes to a file
-    with open("statuses.txt", "a") as f:
+    with open("text/statuses.txt", "a") as f:
         f.seek(0)
         f.truncate()
         for i in range(len(urls)):

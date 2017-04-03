@@ -1,0 +1,160 @@
+0 || http://automation.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+1 || http://rieff.ieor.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+2 || http://robotics.berkeley.edu
+	Status: 403
+
+3 || http://demonstrate.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+4 || http://teleactor.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+5 || http://calmr.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+6 || http://cal-mr.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+7 || http://www.dislocation.net
+	Status: 500
+
+8 || http://edison.ieor.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+9 || http://shadow.ieor.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+10 || http://eigentaste.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+11 || http://ouija.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+12 || http://taylor.ieor.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+13 || http://memento.ieor.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+14 || http://cnm.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+15 || http://bcnm.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+16 || http://dd.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+17 || http://californiareportcard.org
+	Status: 200
+	Displays properly ✓
+
+18 || http://cafesystem.org
+	Status: 403
+
+19 || http://californiareportcard.org/naturalFrequencies
+	Status: 403
+
+20 || http://californiareportcard.org/disaster
+	Status: 500
+
+21 || http://californiareportcard.org/v26
+	Status: 200
+	Displays properly ✓
+
+22 || http://californiareportcard.org/participa/static
+	Status: 403
+
+23 || http://californiareportcard.org/mexico
+	Status: 200
+	Displays properly ✓
+
+24 || http://californiareportcard.org/uganda2
+	Status: 200
+	Displays properly ✓
+
+25 || http://californiareportcard.org/quakecafe2
+	Status: 200
+	Displays properly ✓
+
+26 || http://californiareportcard.org/mobile
+	Status: 200
+	Displays properly ✓
+
+27 || http://californiareportcard.org/quakecafe
+	Status: 200
+	Displays properly ✓
+
+28 || http://californiareportcard.org/v16/stats
+	Status: 404
+
+29 || http://californiareportcard.org/es
+	Status: 200
+	Displays properly ✓
+
+30 || http://quakecafe.org
+	Status: 200
+	Displays properly ✓
+
+31 || http://opinion.berkeley.edu
+	Status: 200
+	Displays properly ✓
+
+32 || http://opinion.berkeley.edu/1.0
+	Status: 500
+
+33 || http://opinion.berkeley.edu/assets
+	Status: 200
+	Displays properly ✓
+
+34 || http://opinion.berkeley.edu/2.0
+	Status: 200
+	Displays properly ✓
+
+35 || http://opinion.berkeley.edu/news
+	Status: 200
+	Displays properly ✓
+
+36 || http://opinion.berkeley.edu/fiatlux
+	Status: HTTPConnectionPool(host='heidegger.ieor.berkeley.edu', port=80): Max retries exceeded with url: /fiatlux (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x10898fbe0>: Failed to establish a new connection: [Errno 61] Connection refused',))
+
+37 || http://opinion.berkeley.edu/prop-30
+	Status: 404
+
+38 || http://opinion.berkeley.edu/ddi
+	Status: 500
+
+39 || http://opinion.berkeley.edu/ddi-static
+	Status: 200
+	Displays properly ✓
+
+40 || http://opinion.berkeley.edu/landing-new
+	Status: 200
+	Displays properly ✓
+
+41 || http://opinion.berkeley.edu/learning
+	Status: 200
+	Displays properly ✓
+
+42 || http://opinion.berkeley.edu/open-nyu-test
+	Status: 404
+
